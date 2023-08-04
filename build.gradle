@@ -1,0 +1,45 @@
+//group 'us.intralot'
+group 'com.intralot'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+   mavenCentral()
+//   mavenLocal()
+//    maven {
+//        url "https://artifactory.intralot.us/artifactory/tools-repo"
+//        credentials {
+//            username 'Automation-Services'
+//            password 'Bitbucket12345!'
+//        }
+//    }
+    maven {
+        url "https://ilotjfrog.intralot.com/artifactory/tools-repo"
+        credentials {
+            username = "admin"
+            password = "P@ssw0rd"
+        }
+    }
+}
+
+dependencies {
+    compile group: 'com.intralot', name: 'automation.commons', version: '1.0.0'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+    afterSuite { desc, result ->
+        println "\nTest result: ${result.resultType}"
+        println "Test summary: ${result.testCount} tests, " +
+                "${result.successfulTestCount} succeeded, " +
+                "${result.failedTestCount} failed, " +
+                "${result.skippedTestCount} skipped"
+    }
+}
