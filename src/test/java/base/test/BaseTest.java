@@ -7,10 +7,10 @@ import selenium.WebDriverInit;
 
 import java.io.IOException;
 
-@ExtendWith(WebDriverInit.class)
+//@ExtendWith(WebDriverInit.class)
 public class BaseTest {
 
-    public String canvasUrl = Properties.getPropertyValue("canvasUrl");
+    public String url = Properties.getPropertyValue("sause.url");
 
     @BeforeAll
     public static void loadProperties() throws IOException {
