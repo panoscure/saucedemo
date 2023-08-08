@@ -4,7 +4,6 @@ import base.test.BaseTest;
 import canvas.page.objects.HomePage;
 import canvas.page.objects.LoginObject;
 import com.google.common.truth.Truth;
-import common.utils.Properties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class LoginParametarized extends BaseTest {
 
     //public String username = Properties.getPropertyValue("sauce.user");
-    public String password = Properties.getPropertyValue("sauce.password");
+    public String password = BaseTest.getPropertyValue("sauce.password");
 
 
 

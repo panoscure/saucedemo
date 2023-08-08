@@ -4,7 +4,6 @@ import base.test.BaseTest;
 import canvas.page.objects.HomePage;
 import canvas.page.objects.LoginObject;
 import com.google.common.truth.Truth;
-import common.utils.Properties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,11 +14,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class AddToCartCheckout extends BaseTest {
 
-    public String username = Properties.getPropertyValue("sauce.user");
-    public String password = Properties.getPropertyValue("sauce.password");
-    public String firstName = Properties.getPropertyValue("sauce.firstName");
-    public String lastName = Properties.getPropertyValue("sauce.lastName");
-    public String zipCode = Properties.getPropertyValue("sauce.zipCode");
+    public String username = BaseTest.getPropertyValue("sauce.user");
+    public String password = BaseTest.getPropertyValue("sauce.password");
+    public String firstName = BaseTest.getPropertyValue("sauce.firstName");
+    public String lastName = BaseTest.getPropertyValue("sauce.lastName");
+    public String zipCode = BaseTest.getPropertyValue("sauce.zipCode");
 
 
     @Test

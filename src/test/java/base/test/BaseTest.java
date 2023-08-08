@@ -6,24 +6,43 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import selenium.WebDriverInit;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
 
 //@ExtendWith(WebDriverInit.class)
 public class BaseTest {
 
-    public String url = Properties.getPropertyValue("sause.url");
+    public static final java.util.Properties properties = new java.util.Properties();
 
-    @BeforeAll
-    public static void loadProperties() throws IOException {
-//        String environment = System.getenv("BAMBOO_TARGETED_ENV");
-        String environment = "DC_DEV";
-        if (environment == null) throw new RuntimeException("No environment variables found in order to load properties");
-        switch (environment) {
-            case "DC_DEV":
-                Properties.loadProperties("dcdev.properties");
-                break;
-            case "DC_QA":
-                Properties.loadProperties("dcqa.properties");
-                break;
+    public static String url;
+
+    public BaseTest()
+    {
+        loadProperties("dcdev.properties");
+        url = BaseTest.getPropertyValue("sause.url");
+
+    }
+
+    public static void loadProperties(String filename) {
+        InputStream inputStream = BaseTest.class.getClassLoader().getResourceAsStream(filename);
+        try {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        Iterator<Object> itr = properties.keySet().iterator();
+        while (itr.hasNext()) {
+            String key = (String) itr.next();
+            System.setProperty(key, properties.getProperty(key));
+        }
+    }
+
+    public static String getPropertyValue(String key) {
+        return properties.getProperty(key);
+    }
+
+    public static void setPropertyValue(String key, String value) {
+        properties.setProperty(key, value);
     }
 }

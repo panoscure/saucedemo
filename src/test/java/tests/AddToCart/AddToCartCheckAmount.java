@@ -4,7 +4,6 @@ import base.test.BaseTest;
 import canvas.page.objects.HomePage;
 import canvas.page.objects.LoginObject;
 import com.google.common.truth.Truth;
-import common.utils.Properties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
@@ -14,8 +13,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class AddToCartCheckAmount extends BaseTest {
 
-    public String username = Properties.getPropertyValue("sauce.user");
-    public String password = Properties.getPropertyValue("sauce.password");
+    public String username = BaseTest.getPropertyValue("sauce.user");
+    public String password = BaseTest.getPropertyValue("sauce.password");
 
 
     @Test

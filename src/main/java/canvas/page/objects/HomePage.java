@@ -23,7 +23,7 @@ public class HomePage {
     public String getPageTitle() {
         new WebDriverWait(webDriver, 10).until(ExpectedConditions.presenceOfElementLocated
                 (By.className("app_logo")));
-            WebElement titleText = SeleniumWaits.visibilityOfElementLocated(webDriver, By.className("app_logo"));
+        WebElement titleText =  webDriver.findElement(By.className("app_logo"));
 
         String titleTextAsString = titleText.getText();
         return titleTextAsString;

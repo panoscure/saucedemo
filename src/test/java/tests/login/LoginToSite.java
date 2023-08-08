@@ -4,7 +4,6 @@ import base.test.BaseTest;
 import canvas.page.objects.HomePage;
 import canvas.page.objects.LoginObject;
 import com.google.common.truth.Truth;
-import common.utils.Properties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
@@ -17,14 +16,16 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 public class LoginToSite extends BaseTest {
 
-    public String username = Properties.getPropertyValue("sauce.user");
-    public String password = Properties.getPropertyValue("sauce.password");
+
+    public String username = BaseTest.getPropertyValue("sauce.user");
+    public String password = BaseTest.getPropertyValue("sauce.password");
 
 
 
         @Test
         @DisplayName("Happy Path Login")
         public void performLogin() {
+
 
 
             WebDriverManager.chromedriver().driverVersion("115.0").setup();
